@@ -10,7 +10,7 @@ export class ConfluenceApi {
       headers: {
         'Accept': 'application/json',
         'Authorization': `Basic ${btoa(`${import.meta.env.VITE_CONFLUENCE_EMAIL}:${import.meta.env.VITE_CONFLUENCE_API_TOKEN}`)}`,
-        'ocp-apim-subscription-key': `${import.meta.env.VITE_APIM}`
+        'ocp-apim-subscription-key': `5027a069d0bc4d8080340f890470cfc9`
       }
     })
 
