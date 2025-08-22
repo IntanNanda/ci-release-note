@@ -42,13 +42,13 @@ export async function clientLoader(_: LoaderFunctionArgs) {
   return { ibidData, FMSData };
 }
 
-export function HydrateFallback() {
-  return (
-    <div className="flex items-center justify-center h-full p-6">
-      <div className="animate-spin h-10 w-10 rounded-full border-4 border-gray-300 border-t-blue-500"></div>
-    </div>
-  );
-}
+// export function HydrateFallback() {
+//   return (
+//     <div className="flex items-center justify-center h-full p-6">
+//       <div className="animate-spin h-10 w-10 rounded-full border-4 border-gray-300 border-t-blue-500"></div>
+//     </div>
+//   );
+// }
 
 function PageContent({ pageId }: { pageId: string }) {
   const [page, setPage] = useState<any>(null);
@@ -103,6 +103,14 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   const [selectedPage, setSelectedPage] = useState<string | null>(null);
   const [breadcrumbPath, setBreadcrumbPath] = useState<GetConfluenceChild[]>([]);
 
+  if (!ibidData || !FMSData) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="animate-spin h-10 w-10 rounded-full border-4 border-gray-300 border-t-blue-500"></div>
+      </div>
+    );
+  }
+  
   const products = [
     { key: "ibid", title: "IBID", data: ibidData },
     { key: "astrafms", title: "AstraFMS 2.0", data: FMSData },
