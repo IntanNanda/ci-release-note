@@ -6,4 +6,5 @@ export default {
   ssr: false,
   // Enable static pre-rendering for GitHub Pages
   prerender: true,
+  basename: process.env.NODE_ENV === 'production' ? '/ci-release-note' : undefined,
 } satisfies Config;
