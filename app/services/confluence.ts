@@ -1,6 +1,7 @@
 import axios, { type AxiosInstance, type AxiosResponse } from "axios";
 import type { ConfluenceApiError } from "~/types/confluence";
 
+
 export class ConfluenceApi {
   private api: AxiosInstance;
 
