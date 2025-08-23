@@ -34,6 +34,12 @@ jobs:
       - name: Type check
         run: npm run typecheck
 
+      - name: Create .env file
+        run: |
+          echo "VITE_CONFLUENCE_EMAIL=${{ secrets.VITE_CONFLUENCE_EMAIL }}" >> .env
+          echo "VITE_CONFLUENCE_API_TOKEN=${{ secrets.VITE_CONFLUENCE_API_TOKEN }}" >> .env
+          echo "VITE_APIM=${{ secrets.VITE_APIM }}" >> .env
+
       - name: Build for GitHub Pages
         run: npm run build
         env:
@@ -42,12 +48,6 @@ jobs:
           VITE_CONFLUENCE_EMAIL: ${{ secrets.VITE_CONFLUENCE_EMAIL }}
           VITE_CONFLUENCE_API_TOKEN: ${{ secrets.VITE_CONFLUENCE_API_TOKEN }}
           VITE_APIM: ${{ secrets.VITE_APIM }}
-
-      - name: Create .env file
-        run: |
-          echo "VITE_CONFLUENCE_EMAIL=${{ secrets.VITE_CONFLUENCE_EMAIL }}" >> .env
-          echo "VITE_CONFLUENCE_API_TOKEN=${{ secrets.VITE_CONFLUENCE_API_TOKEN }}" >> .env
-          echo "VITE_APIM=${{ secrets.VITE_APIM }}" >> .env
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
