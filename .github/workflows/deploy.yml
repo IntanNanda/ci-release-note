@@ -34,6 +34,16 @@ jobs:
       - name: Type check
         run: npm run typecheck
 
+      - name: Debug environment variables
+        run: |
+          echo "VITE_CONFLUENCE_EMAIL is set: ${{ secrets.VITE_CONFLUENCE_EMAIL != '' }}"
+          echo "VITE_CONFLUENCE_API_TOKEN is set: ${{ secrets.VITE_CONFLUENCE_API_TOKEN != '' }}"
+          echo "VITE_APIM is set: ${{ secrets.VITE_APIM != '' }}"
+        env:
+          VITE_CONFLUENCE_EMAIL: ${{ secrets.VITE_CONFLUENCE_EMAIL }}
+          VITE_CONFLUENCE_API_TOKEN: ${{ secrets.VITE_CONFLUENCE_API_TOKEN }}
+          VITE_APIM: ${{ secrets.VITE_APIM }}
+
       - name: Build for GitHub Pages
         run: npm run build
         env:
